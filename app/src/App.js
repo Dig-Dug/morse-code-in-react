@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>MORSE TRANSLATOR</h1>
-        <h2>*under construction*</h2>
+        <h2>*under construction * *</h2>
         <label>write it: <input type="text" name="text" />
         <button >hear it</button> 
          </label>
@@ -18,7 +18,7 @@ function App() {
        
          <img src={logo} className="App-logo" alt="logo" /> 
         <p>
-          check each character
+          check each character 
         </p>
         <Sound/>
       </header>
