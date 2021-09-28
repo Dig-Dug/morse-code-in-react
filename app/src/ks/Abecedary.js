@@ -3,19 +3,42 @@ import * as Tone from 'tone'
 
 //import SoundHandler from './SoundHandler';
 //create a synth and connect it to the main output (your speakers)
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.FMSynth(Tone.Synth).toDestination();
+//const plucky = new Tone.PluckSynth().toDestination();
+const osc = new Tone.Oscillator().toDestination();
 const now = Tone.now()
-//play a middle 'C' for the duration of an 8th note
-//synth.triggerAttackRelease("C4", "8n");
+
+
 
 const playAudio = () => {
-    synth.triggerAttackRelease("C4", "8n")
-   // console.log("ioioioioioio")
+    Tone.Transport.scheduleRepeat((time) => {
+        // use the callback time to schedule events
+        osc.start(time).stop(time + 0.1);
+    }, "8n");
+    // transport must be started before it starts invoking events
+    Tone.Transport.start();
+    Tone.Transport.stop();
   }
 const playB = () => {
-    synth.triggerAttackRelease("F4", now + 0.5) }
+   // synth.triggerAttackRelease("F4", now + 0.5) 
+    osc.start("8n"); osc.stop("+0.5")
+    
+
+/*     osc.sync().start(0).stop(0.3);
+// start the transport.
+Tone.Transport.start();
+// set it to loop once a second
+Tone.Transport.loop = true;
+Tone.Transport.loopEnd = 1; */
+}
 class Abecedary extends React.Component{
-   
+   constructor(props) {
+        super(props);
+        this.playB = this.playB.bind(this);
+      } 
+    playB(){
+        osc.start("8n"); osc.stop("+0.5")
+    }
 
     render(){
         return(
@@ -23,8 +46,8 @@ class Abecedary extends React.Component{
             <div> 
       <button onClick={playAudio}>A</button> 
      
-      <button onClick={playB}>B</button> 
-      <button>C</button> 
+      <button onClick={this.playB}>B</button> 
+      <button >C</button> 
       <button>D</button> 
       <button>E</button> 
       <button>F</button> 
