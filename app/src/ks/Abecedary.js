@@ -4,14 +4,16 @@ import * as Tone from 'tone'
 //import SoundHandler from './SoundHandler';
 //create a synth and connect it to the main output (your speakers)
 const synth = new Tone.Synth().toDestination();
-
+const now = Tone.now()
 //play a middle 'C' for the duration of an 8th note
 //synth.triggerAttackRelease("C4", "8n");
 
 const playAudio = () => {
     synth.triggerAttackRelease("C4", "8n")
-    console.log("ioioioioioio")
+   // console.log("ioioioioioio")
   }
+const playB = () => {
+    synth.triggerAttackRelease("F4", now + 0.5) }
 class Abecedary extends React.Component{
    
 
@@ -21,11 +23,11 @@ class Abecedary extends React.Component{
             <div> 
       <button onClick={playAudio}>A</button> 
      
-      <button >E</button> 
-      <button>I</button> 
-      <button>O</button> 
-      <button>U</button> 
-      <button>0</button> 
+      <button onClick={playB}>B</button> 
+      <button>C</button> 
+      <button>D</button> 
+      <button>E</button> 
+      <button>F</button> 
       <br/>
       <button>1</button> 
       <button>2</button> 
