@@ -1,15 +1,16 @@
 import React from 'react';
-import playB from './Abecedary';
+import Abecedary from './Abecedary';
 
 
 
 class InputButton extends React.Component{
+   
     render(){
         return(
             
             <div> 
        <input type="text" name="text" />
-        <button  onClick={this.playB}>hear it</button> 
+        <button onClick={this.playB}>hear it</button> 
        
       
          </div>

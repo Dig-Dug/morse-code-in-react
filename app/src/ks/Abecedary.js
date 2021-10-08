@@ -10,6 +10,7 @@ const now = Tone.now()
 
 
 
+
 const playAudio = () => {
     Tone.Transport.scheduleRepeat((time) => {
         // use the callback time to schedule events
@@ -32,25 +33,38 @@ Tone.Transport.loop = true;
 Tone.Transport.loopEnd = 1; */
 }
 class Abecedary extends React.Component{
-   constructor(props) {
+  /*  constructor(props) {
         super(props);
         this.playB = this.playB.bind(this);
-      } 
-    playB(){
-        osc.start("8n"); osc.stop("+0.5")
-    }
+      } */
+    playA(){
+        let o = new Tone.Oscillator(440, "sine").toDestination();
+      
+        Tone.Transport.bpm.value = 30;
+        Tone.Transport.scheduleRepeat((time) => {
+            o.start("8n").stop( "+0.5");
+        }, "4n");
+        // transport must be started before it starts invoking events
+        Tone.Transport.start();
+       
+   
+    }  
+    playB(){osc.start("8n"); osc.stop("+0.5")}  
+    playC(){osc.start("8n"); osc.stop("+0.5")}
+    playD(){ osc.start("8n"); osc.stop("+0.5")}
+    playE(){osc.start("8n"); osc.stop("+0.5")} 
+    playF(){osc.start("8n"); osc.stop("+0.5")}
 
     render(){
         return(
                 
             <div> 
-      <button onClick={playAudio}>A</button> 
-     
+      <button onClick={this.playA}>A</button> 
       <button onClick={this.playB}>B</button> 
-      <button >C</button> 
-      <button>D</button> 
-      <button>E</button> 
-      <button>F</button> 
+      <button onClick={this.playC}>C</button> 
+      <button onClick={this.playD}>D</button> 
+      <button onClick={this.playE}>E</button> 
+      <button onClick={this.playF}>F</button> 
       <br/>
       <button>1</button> 
       <button>2</button> 
